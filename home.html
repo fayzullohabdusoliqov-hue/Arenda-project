@@ -37,24 +37,70 @@
                         <small class="dashboard_small" id="profit"></small>
                     </div>
                     <div class="dashboard_box">
-                        <h3 class="dashboard_subtitle"></h3><br>
-                        <small class="dashboard_small" id=""></small>
+                        <h3 class="dashboard_subtitle">Maxsulot soni:</h3><br>
+                        <small class="dashboard_small" id="somethinks"></small>
                     </div>
                 </div>
             </div>
         </section>
         <section class="somethinks">
             <div class="container somethinks__wrapper">
-
+                <div class="somethinks__content">
+                    <h2 class="somethinks_title">Mahsulotlar</h2>
+                    <button class="somethinks_btn">+</button>
+                </div>
+                <ul class="somethinks__list"></ul>
             </div>
         </section>
         <section class="history">
             <div class="container history__wrapper">
-
+                <div class="history__content">
+                    <h2 class="history_title">Tarix</h2>
+                    <button class="history_btn">+</button>
+                </div>
+                <ul class="history__list"></ul>
             </div>
         </section>
     </main>
-    
+    <footer class="site__footer">
+        <form class="somethinks__form">
+            <div class="form__content">
+                <h2 class="form_title">Yangi maxsulot qo'shish</h2>
+                <button class="form_close" id="somethinks_close">&times;</button>
+            </div>
+            <div class="form__inner">
+                <label for="somethink_input" class="form_lobel">Ismini kiriting:</label>
+                <input id="somethink_input" type="text" class="form_input">
+            </div>
+            <button id="somethinks_submit" class="form_btn">qo'shish</button>
+        </form>
+        <form class="history__form">
+            <div class="form__content">
+                <h2 class="form_title">Tarix qo'shish</h2>
+                <button class="form_close" id="history_close">&times;</button>
+            </div>
+            <div class="form__inners">
+                <div class="form__inner">
+                    <label for="history_name" class="form_lobel">Odam ismini kiriting:</label>
+                    <input id="history_name" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="history_surname" class="form_lobel">Odam familiyasini kiriting:</label>
+                    <input id="history_surname" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="history_number" class="form_lobel">Telefon raqamini kiriting:</label>
+                    <input id="history_number" type="tel" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="history_somethink" class="form_lobel">Mahsulot ismini kiriting:</label>
+                    <input id="history_somethink" type="text" class="form_input">
+                </div>
+            </div>
+            <button id="history_submit" class="form_btn">qo'shish</button>
+        </form>
+    </footer>
+
     <script src="./home.js"></script>
 </body>
 </html>
