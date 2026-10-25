@@ -1,0 +1,7 @@
+.dashboard{
+    background: var(--section);
+    width: 100%;
+    height: 500px;
+    display: inline-block;
+    color: var(--title-color);
+}
