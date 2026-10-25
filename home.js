@@ -176,8 +176,6 @@ async function deleteHistory(firebaseKey){
         getHistory()
     }catch(err){
         console.log(err)
-    }finally{
-        console.log("Yakunlandi")
     }
 }
 function renderHistory(data){
@@ -187,7 +185,7 @@ function renderHistory(data){
             historyList.innerHTML += `
                     <li class="history_item">
                         <div class="history__inner">
-                            <strong class="history_strong">TS</strong>
+                            <strong class="history_strong">${el.name[0]}${el.surname[0]}</strong>
                             <h4 class="history_subtitle">${el.name} <br> ${el.surname}</h4>
                         </div>
                         <div class="history__btns">

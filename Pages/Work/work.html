@@ -23,8 +23,67 @@
         </ul>
     </aside>
     <main class="work__main">
-
+        <section class="info">
+            <div class="info__content">
+                <h1 class="into_title">Mahsulotlar haqida ma'lumotlar</h1>
+                <button class="info_btn-content">qo'shish</button>
+            </div>
+            <ul class="info__list"></ul>
+        </section>
     </main>
+    <footer class="site__footer">
+        <form class="info__form">
+            <div class="info__content">
+                <h2 class="form_title">Mahsulot qo'shish</h2>
+                <button class="form_close">&times;</button>
+            </div>
+            <div class="form__inners">
+                <div class="form__inner">
+                    <label for="name" class="form_label">Odam ismi:</label>
+                    <input id="name" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="surname" class="form_label">Odam familiyasi:</label>
+                    <input id="surname" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="phone" class="form_label">Telefo'n no'meri:</label>
+                    <input id="phone" type="tel" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="buyDate" class="form_label">Sotib olingan sana:</label>
+                    <input id="buyDate" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="sellDate" class="form_label">Sotiladigan sana:</label>
+                    <input id="sellDate" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="buyPrice" class="form_label">Sotib olingan narx:</label>
+                    <input id="buyPrice" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="monthlyPrice" class="form_label">Oylik to'lo'v:</label>
+                    <input id="monthlyPrice" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="image" class="form_label">Mahsulot rasmi:</label>
+                    <input id="image" type="file" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="somethinkName" class="form_label">Mahsulot ismi:</label>
+                    <select id="somethinkName" class="form_input">
+                        <option value="no" disabled selected>Mahsulot ismini tanlang</option>
+                    </select>
+                </div>
+                <div class="form__inner">
+                    <label for="comment" class="form_label">Qo'shimcha ma'lumot:</label>
+                    <input id="comment" type="text" class="form_input">
+                </div>
+            </div>
+            <button class="info_submit">qo'shish</button>
+        </form>
+    </footer>
     
     <script src="./work.js"></script>
 </body>

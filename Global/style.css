@@ -9,9 +9,9 @@
     --text-color:rgb(175, 175, 175);
     --small-element:#242426;
 
-    --true-color:green;
-    --mistake-color:orange;
-    --false-color:red;
+    --true-color:rgba(0, 255, 0, 0.571);
+    --mistake-color:rgba(255, 166, 0, 0.54);
+    --false-color:rgba(255, 0, 0, 0.616);
 
     --box-shadow:0 4px 12px rgba(0, 0, 0, 0.293);
     --section-shadow:0 8px 24px rgba(0,0,0,0.25);
