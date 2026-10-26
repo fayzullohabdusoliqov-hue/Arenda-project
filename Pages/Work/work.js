@@ -73,6 +73,7 @@ infoCloseBtn.addEventListener("click", (evt) => {
 })
 infoSubmitBtn.addEventListener("click", async(evt) => {
     evt.preventDefault()
+    const image = await stringImage(infoImage.files[0])
 
     if(!isAddOrEdit){
         try{
@@ -82,7 +83,7 @@ infoSubmitBtn.addEventListener("click", async(evt) => {
                     humanName: infoHumanName.value,
                     humanSurame: infoHumanSurame.value,
                     phone: infoHumanPhone.value,
-                    image: stringImage(infoImage.files[0]),
+                    image: image,
                     somethinkName: infoSomethinkName.value,
                     buyDate: infoBuyDate.value,
                     sellDate: infoSellDate.value,
@@ -110,7 +111,7 @@ infoSubmitBtn.addEventListener("click", async(evt) => {
                     humanName: infoHumanName.value,
                     humanSurame: infoHumanSurame.value,
                     phone: infoHumanPhone.value,
-                    image: stringImage(infoImage.files[0]),
+                    image: image,
                     somethinkName: infoSomethinkName.value,
                     buyDate: infoBuyDate.value,
                     sellDate: infoSellDate.value,
@@ -150,6 +151,7 @@ async function getSomethinks(){
 }
 function renderSomethinks(data){
     if(data){
+        infoSomethinkName.innerHTML = ""
         data.forEach(element => {
             infoSomethinkName.innerHTML += `
                 <option value="${element.name}">${element.name}</option>
