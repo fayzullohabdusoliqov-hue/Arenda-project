@@ -214,10 +214,30 @@ function renderProducts(data){
 }
 async function deleteProduct(firebaseKey){
     try{
-        const res = await fetch(`https://variant-4d481-default-rtdb.firebaseio.com/products/${firebaseKey}.json`,{
+        postProductHistory(firebaseKey)
+        const deleteRes = await fetch(`https://variant-4d481-default-rtdb.firebaseio.com/products/${firebaseKey}.json`,{
             method: "DELETE"
         }) 
         getProducts()
+    }catch(err){
+        console.log(err)
+    }
+}
+async function postProductHistory(firebaseKey){
+    try{
+        const productRes = await fetch(`https://variant-4d481-default-rtdb.firebaseio.com/products/${firebaseKey}.json`)
+        const productData = await productRes.json()
+
+        const res = await fetch("https://variant-4d481-default-rtdb.firebaseio.com/history.json",{
+            method: "POST",
+            body: JSON.stringify({
+                name: productData.humanName,
+                surname: productData.humanSurame,
+                somethink: productData.somethinkName,
+                phone: productData.phone
+            })
+        })
+        
     }catch(err){
         console.log(err)
     }

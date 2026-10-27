@@ -281,6 +281,21 @@ textarea {
   --webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
+::-webkit-scrollbar {
+    background: #000;
+    width: 8px;
+}
+
+/* Scrollbarning harakatlanuvchi qismi */
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+/* Scrollbar yo'lagi */
+::-webkit-scrollbar-track {
+    background: #000;
+}
 
 /**
  * Remove the inner padding in Chrome and Safari on macOS.

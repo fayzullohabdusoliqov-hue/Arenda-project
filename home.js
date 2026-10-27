@@ -160,7 +160,6 @@ async function getHistory(){
         if(json){
             const data = Object.entries(json).map(([key,value]) => ({firebaseKey: key, ...value}))
             renderHistory(data)
-            console.log(data)
         }else{
             renderHistory(null)
         }
@@ -190,7 +189,7 @@ function renderHistory(data){
                         </div>
                         <div class="history__btns">
                             <span class="history_number">${el.phone}</span>
-                            <button class="history_somethink">S</button>
+                            <span class="history_number">${el.somethink}</span>
                             <button class="history_delete" onclick="deleteHistory('${el.firebaseKey}')">D</button>
                         </div>
                     </li>`
@@ -202,5 +201,43 @@ function renderHistory(data){
     }
 }
 
+async function getProducts(){
+    try{
+        const res = await fetch("https://variant-4d481-default-rtdb.firebaseio.com/products.json")
+        const json = await res.json()
+        
+        if(json){
+            const data = Object.values(json)
+            let spentTotal = 0
+            let profitTotal = 0
+            for(let i = 0; i < data.length; i++){
+                spentTotal += Number(data[i].buyPrice)
+                profitTotal += calculateProfit(data[i].buyDate, data[i].sellDate, Number(data[i].monthlyPrice) || 0)
+            }
+
+            dashboardSomethinks.textContent = `${data.length} ta`
+            dashboardProfit.textContent = `${profitTotal - spentTotal}$`
+            dashboardSpent.textContent = `${spentTotal}$`
+        }else{
+            dashboardSomethinks.textContent = `0 ta`
+            dashboardProfit.textContent = `0$`
+            dashboardSpent.textContent = `0$`
+        }
+    }catch(err){
+        console.log(err)
+    }
+}
+function calculateProfit(startDate, endDate, monthlyPayment) {
+    const start = new Date(startDate)
+    const end = new Date(endDate)
+
+    const months =
+        (end.getFullYear() - start.getFullYear()) * 12 +
+        (end.getMonth() - start.getMonth())
+
+    return months * monthlyPayment
+}
+
 getSomethinks()
 getHistory()
+getProducts()
