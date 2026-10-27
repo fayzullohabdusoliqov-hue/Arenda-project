@@ -26,6 +26,7 @@
     border-radius: 16px;
     box-shadow: var(--section-shadow);
     color: var(--title-color);
+    margin-bottom: 20px;
     font-family: Inter, Arial, sans-serif;
 }
 .product-header {
