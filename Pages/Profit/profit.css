@@ -67,11 +67,19 @@
     background: var(--small-element);
     border: 1px solid var(--border);
     border-radius: 12px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 .info-item:hover {
+    background: var(--section);
+    color: var(--title-color);
     border-color: #555961;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px);
 }
 .info-label {
     display: block;

@@ -90,13 +90,20 @@
     border: 1px solid var(--border);
     border-radius: 10px;
 
-    transition: border-color 0.2s ease,
-                box-shadow 0.2s ease;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .detail__item:hover {
-    border-color: #50545c;
-    box-shadow: var(--box-shadow);
+    background: var(--section);
+    color: var(--title-color);
+    border-color: #555961;
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px);
 }
 
 .detail__item--full {

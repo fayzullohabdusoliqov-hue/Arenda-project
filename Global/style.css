@@ -216,8 +216,8 @@ a{
 }
 .user_logo{
     background: var(--big-section);
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 
     display: flex;
     align-items: center;
@@ -226,7 +226,8 @@ a{
     border-radius: 50%;
     border: 1px solid var(--border);
     box-shadow: var(--box-shadow);
-    font-weight: 800;
+    font-weight: 700;
+    font-size: small;
 }
 .user__info:hover{
     background: var(--section);
