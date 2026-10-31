@@ -8,7 +8,6 @@ const infoBtn = document.querySelector(".info_btn-content")
 const infoCloseBtn = document.querySelector(".form_close")
 const infoSubmitBtn = document.querySelector(".info_submit")
 const infoHumanName = document.querySelector("#name")
-const infoHumanSurame = document.querySelector("#surname")
 const infoHumanPhone = document.querySelector("#phone")
 const infoSomethinkName = document.querySelector("#somethinkName")
 const infoBuyDate = document.querySelector("#buyDate")
@@ -39,7 +38,7 @@ headerBtn.addEventListener("click", (evt) => {
         }, 1000)
     }
 })
-function stringImage(file) {
+function stringImage(file){
     if(file){
         return new Promise((resolve, reject) => {
             const reader = new FileReader()
@@ -56,6 +55,43 @@ function stringImage(file) {
         return ""
     }
 }
+function getCurrentMonth() {
+    const date = new Date();
+
+    return `${date.getFullYear()}-${String(
+        date.getMonth() + 1
+    ).padStart(2, "0")}`;
+}
+async function toggleMonthlyStatus(firebaseKey, currentMonth) {
+    try {
+        const res = await fetch(
+            `https://variant-4d481-default-rtdb.firebaseio.com/products/${firebaseKey}.json`
+        );
+
+        const data = await res.json();
+
+        let monthlyStatus = data.monthlyStatus || {};
+
+        const isPaid = monthlyStatus[currentMonth] === true;
+
+        monthlyStatus[currentMonth] = !isPaid;
+
+        await fetch(
+            `https://variant-4d481-default-rtdb.firebaseio.com/products/${firebaseKey}.json`,
+            {
+                method: "PATCH",
+                body: JSON.stringify({
+                    monthlyStatus: monthlyStatus
+                })
+            }
+        );
+
+        getProducts();
+
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 infoBtn.addEventListener("click", (evt) => {
     evt.preventDefault()
@@ -64,7 +100,6 @@ infoBtn.addEventListener("click", (evt) => {
     infoFormTitle.textContent = "Mahsulot qo'shish"
     infoSubmitBtn.textContent = "qo'shish"
     isAddOrEdit = false
-    getSomethinks()
 })
 infoCloseBtn.addEventListener("click", (evt) => {
     evt.preventDefault()
@@ -81,7 +116,6 @@ infoSubmitBtn.addEventListener("click", async(evt) => {
                 method: "POST",
                 body: JSON.stringify({
                     humanName: infoHumanName.value,
-                    humanSurame: infoHumanSurame.value,
                     phone: infoHumanPhone.value,
                     image: image,
                     somethinkName: infoSomethinkName.value,
@@ -109,7 +143,6 @@ infoSubmitBtn.addEventListener("click", async(evt) => {
                 method: "PATCH",
                 body: JSON.stringify({
                     humanName: infoHumanName.value,
-                    humanSurame: infoHumanSurame.value,
                     phone: infoHumanPhone.value,
                     image: image,
                     somethinkName: infoSomethinkName.value,
@@ -134,36 +167,6 @@ infoSubmitBtn.addEventListener("click", async(evt) => {
     }
 })
 
-async function getSomethinks(){
-    try{
-        const res = await fetch("https://variant-4d481-default-rtdb.firebaseio.com/somethinks.json")
-        const json = await res.json()
-
-        if(json){
-            const data = Object.values(json)
-            renderSomethinks(data)
-        }else{
-            renderSomethinks(null)
-        }
-    }catch(err){
-        console.log(err)
-    }
-}
-function renderSomethinks(data){
-    if(data){
-        infoSomethinkName.innerHTML = ""
-        data.forEach(element => {
-            infoSomethinkName.innerHTML += `
-                <option value="${element.name}">${element.name}</option>
-            `
-        })
-    }else{
-        infoSomethinkName.innerHTML = `
-            <option value="no">Mavjud emas!</option>
-        `
-    }
-}
-
 async function getProducts(){
     try{
         const res = await fetch("https://variant-4d481-default-rtdb.firebaseio.com/products.json")
@@ -179,37 +182,80 @@ async function getProducts(){
         console.log(err)
     }
 }
-function renderProducts(data){
-    if(data){
-        infoList.innerHTML = ""
-        for(let i = 0; i < data.length; i++){
+function renderProducts(data) {
+    if (data && data.length > 0) {
+        infoList.innerHTML = "";
+
+        const currentMonth = getCurrentMonth();
+
+        for (let i = 0; i < data.length; i++) {
+
+            const isPaid =
+                data[i].monthlyStatus?.[currentMonth] === true;
+
             infoList.innerHTML += `
                 <li class="info_item">
                     <div class="info__content">
                         <div class="info__user">
-                            <strong class="info_strong">${data[i].humanName[0]}${data[i].humanSurame[0]}</strong>
-                            <h3 class="info_subtitle">${data[i].humanName} ${data[i].humanSurame}</h3>
+
+                            <strong
+                                class="info_strong ${isPaid ? "paid" : ""}"
+                                onclick="toggleMonthlyStatus('${data[i].firebaseKey}', '${currentMonth}')"
+                            >
+                                ${i + 1}
+                            </strong>
+
+                            <h3 class="info_subtitle">
+                                ${data[i].humanName}
+                            </h3>
+
                         </div>
-                        <a href="/Pages/Detail/detail.html?key=${data[i].firebaseKey}" class="info_btn">to'liq</a>
+
+                        <a href="/Pages/Detail/detail.html?key=${data[i].firebaseKey}"
+                           class="info_btn">
+                            to'liq
+                        </a>
                     </div>
+
                     <span class="line"></span>
+
                     <div class="info__inner">
                         <div class="info__dates">
-                            <strong class="info_strong-name">${data[i].somethinkName}</strong>
-                            <strong class="info_date">${data[i].buyDate}</strong>
-                            <strong class="info_date">${data[i].sellDate}</strong>
+                            <strong class="info_strong-name">
+                                ${data[i].somethinkName}
+                            </strong>
+
+                            <strong class="info_date">
+                                ${data[i].buyDate}
+                            </strong>
+
+                            <strong class="info_date">
+                                ${data[i].sellDate}
+                            </strong>
                         </div>
+
                         <div class="info__btn">
-                            <button class="info_btn" onclick="editProduct('${data[i].firebaseKey}')">E</button>
-                            <button class="info_btn" onclick="deleteProduct('${data[i].firebaseKey}')">D</button>
+                            <button class="info_btn"
+                                onclick="editProduct('${data[i].firebaseKey}')">
+                                E
+                            </button>
+
+                            <button class="info_btn"
+                                onclick="deleteProduct('${data[i].firebaseKey}')">
+                                D
+                            </button>
                         </div>
                     </div>
-                </li>`
+                </li>
+            `;
         }
-    }else{
+
+    } else {
         infoList.innerHTML = `
-            <h3 class='info_dont-have'>Mahsulotlar mavjud emas!</h3>
-        `
+            <h3 class="info_dont-have">
+                Mahsulotlar mavjud emas!
+            </h3>
+        `;
     }
 }
 async function deleteProduct(firebaseKey){
@@ -232,7 +278,6 @@ async function postProductHistory(firebaseKey){
             method: "POST",
             body: JSON.stringify({
                 name: productData.humanName,
-                surname: productData.humanSurame,
                 somethink: productData.somethinkName,
                 phone: productData.phone
             })
@@ -243,7 +288,6 @@ async function postProductHistory(firebaseKey){
     }
 }
 async function editProduct(firebaseKey){
-    getSomethinks()
     footer.style.display = "flex"
     infoModal.style.display = "block"
     infoFormTitle.textContent = "Mahsulotni o'zgartirish"
@@ -254,13 +298,13 @@ async function editProduct(firebaseKey){
         const data = await res.json()
 
         infoHumanName.value = data.humanName
-        infoHumanSurame.value = data.humanSurame
         infoHumanPhone.value = data.phone
         infoBuyDate.value = data.buyDate
         infoSellDate.value = data.sellDate
         infoBuyPrice.value = data.buyPrice
         infoMonthlyPrice.value = data.monthlyPrice
         infoComment.value = data.comment
+        infoSomethinkName.value = data.somethinkName
         isAddOrEdit = true
         editFirebaseKey = firebaseKey
     }catch(err){

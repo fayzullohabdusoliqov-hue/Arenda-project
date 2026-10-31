@@ -50,7 +50,7 @@ function renderProducts(data){
                     <div class="product-header">
                         <div>
                             <h2>${el.humanName}</h2>
-                            <p>${el.humanSurame}</p>
+                            <p>${el.monthlyPrice}$</p>
                         </div>
                         <span class="product-status">${el.somethinkName}</span>
                     </div>
@@ -85,6 +85,7 @@ function renderProducts(data){
         `
     }
 }
+
 function conculateMonthly(startDate, endDate){
     const start = new Date(startDate)
     const end = new Date(endDate)

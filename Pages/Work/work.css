@@ -242,3 +242,13 @@
     align-items: center;
     justify-content: center;
 }
+.info_strong {
+    background: red;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.info_strong.paid {
+    background: green;
+}

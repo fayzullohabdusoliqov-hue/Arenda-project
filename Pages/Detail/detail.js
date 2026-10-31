@@ -42,7 +42,7 @@ async function getProduct(){
         }else{
             detailImage.style.display = "none"
         }
-        detailOwener.textContent = `${data.humanName} ${data.humanSurame}`
+        detailOwener.textContent = `${data.humanName}`
         detailSomethinkName.textContent = `${data.somethinkName}`
         detailPhone.textContent = `${data.phone}`
         detailBuyDate.textContent = `${data.buyDate}`
@@ -54,4 +54,5 @@ async function getProduct(){
         console.log(err)
     }
 }
+
 getProduct()

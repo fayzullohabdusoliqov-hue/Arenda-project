@@ -180,12 +180,12 @@ async function deleteHistory(firebaseKey){
 function renderHistory(data){
     if(data){
         historyList.innerHTML = ""
-        data.forEach((el) => {
+        data.forEach((el, index) => {
             historyList.innerHTML += `
                     <li class="history_item">
                         <div class="history__inner">
-                            <strong class="history_strong">${el.name[0]}${el.surname[0]}</strong>
-                            <h4 class="history_subtitle">${el.name} <br> ${el.surname}</h4>
+                            <strong class="history_strong">${index + 1}</strong>
+                            <h4 class="history_subtitle">${el.name}</h4>
                         </div>
                         <div class="history__btns">
                             <span class="history_number">${el.phone}</span>
