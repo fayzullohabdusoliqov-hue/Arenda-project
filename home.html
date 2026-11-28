@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variant Chiqarish</title>
+    <meta name="theme-color" content="#111214">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" href="./icon-192.png">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Variant Chiqarish">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="./Global/normalize.css">
+    <link rel="stylesheet" href="./Global/style.css">
+    <link rel="stylesheet" href="./home.css">
+</head>
+<body>
+    <header class="site__header">
+        <div class="container header__wrapper">
+            <button class="header_btn"><img width="20" height="20" src="./Photo/icon/sidebar.png" alt=""></button>
+            <span class="header_logo">ZA</span>
+        </div>
+    </header>
+    <aside class="site__sidebar">
+        <ul class="sidebar__list">
+            <li class="sidebar_item"><img width="20" height="20" src="./Photo/icon/home.png" alt=""><a href="./home.html" class="sidebar_link">uy qism</a></li>
+            <li class="sidebar_item"><img width="20" height="20" src="./Photo/icon/work.png" alt=""><a href="./Pages/Work/work.html" class="sidebar_link">ish qism</a></li>
+            <li class="sidebar_item"><img width="20" height="20" src="./Photo/icon/profit.png" alt=""><a href="./Pages/Profit/profit.html" class="sidebar_link">foyda qism</a></li>
+        </ul>
+        <div class="user__info">
+            <span class="user_logo">ZA</span>
+            <h4 class="user_name">Zebo <br> Abdusalihova</h4>
+        </div>
+    </aside>
+    <main class="home__main">
+        <section class="dashboard">
+            <div class="container dashboard__wrapper">
+                <h1 class="dashboard_title">Ma'lumot paneli</h1>
+
+                <div class="dashboard__boxes">
+                    <div class="dashboard_box">
+                        <h3 class="dashboard_subtitle">Sarflangan:</h3><br>
+                        <small class="dashboard_small" id="spent"></small>
+                    </div>
+                    <div class="dashboard_box">
+                        <h3 class="dashboard_subtitle">Foyda:</h3><br>
+                        <small class="dashboard_small" id="profit"></small>
+                    </div>
+                    <div class="dashboard_box">
+                        <h3 class="dashboard_subtitle">Hozirchalik olingan pul:</h3><br>
+                        <small class="dashboard_small" id="profitHave"></small>
+                    </div>
+                    <div class="dashboard_box">
+                        <h3 class="dashboard_subtitle">Olish kerak bo'lgan pul:</h3><br>
+                        <small class="dashboard_small" id="profitGive"></small>
+                    </div>
+                    <div class="dashboard_box">
+                        <h3 class="dashboard_subtitle">Maxsulot soni:</h3><br>
+                        <small class="dashboard_small" id="somethinks"></small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="history">
+            <div class="container history__wrapper">
+                <div class="history__content">
+                    <h2 class="history_title">Tarix</h2>
+                    <button class="history_btn">+</button>
+                </div>
+                <ul class="history__list"></ul>
+            </div>
+        </section>
+    </main>
+    <footer class="site__footer">
+        <form class="history__form">
+            <div class="form__content">
+                <h2 class="form_title">Tarix qo'shish</h2>
+                <button class="form_close" id="history_close">&times;</button>
+            </div>
+            <div class="form__inners">
+                <div class="form__inner">
+                    <label for="history_name" class="form_lobel">Odam ismini kiriting:</label>
+                    <input id="history_name" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="history_surname" class="form_lobel">Odam familiyasini kiriting:</label>
+                    <input id="history_surname" type="text" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="history_number" class="form_lobel">Telefon raqamini kiriting:</label>
+                    <input id="history_number" type="tel" class="form_input">
+                </div>
+                <div class="form__inner">
+                    <label for="history_somethink" class="form_lobel">Mahsulot ismini kiriting:</label>
+                    <input id="history_somethink" type="text" class="form_input">
+                </div>
+            </div>
+            <button id="history_submit" class="form_btn">qo'shish</button>
+        </form>
+    </footer>
+
+    <script src="./home.js"></script>
+</body>
+</html>

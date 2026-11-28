@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../icon-192.png">
+    <title>Variantga chiqarish</title>
+    <link rel="stylesheet" href="../../Global/normalize.css">
+    <link rel="stylesheet" href="../../Global/style.css">
+    <link rel="stylesheet" href="./detail.css">
+</head>
+<body>
+    <header class="site__header">
+        <div class="container header__wrapper">
+            <button class="header_btn"><img width="20" height="20" src="../../Photo/icon/sidebar.png" alt=""></button>
+            <span class="header_logo">ZA</span>
+        </div>
+    </header>
+    <aside class="site__sidebar">
+        <ul class="sidebar__list">
+            <li class="sidebar_item"><img width="20" height="20" src="../../Photo/icon/home.png" alt=""><a href="../../home.html" class="sidebar_link">uy qism</a></li>
+            <li class="sidebar_item"><img width="20" height="20" src="../../Photo/icon/work.png" alt=""><a href="../../Pages/Work/work.html" class="sidebar_link">ish qism</a></li>
+            <li class="sidebar_item"><img width="20" height="20" src="../../Photo/icon/profit.png" alt=""><a href="../../Pages/Profit/profit.html" class="sidebar_link">foyda qism</a></li>
+        </ul>
+        <div class="user__info">
+            <span class="user_logo">ZA</span>
+            <h4 class="user_name">Zebo <br> Abdusalihova</h4>
+        </div>
+    </aside>
+    <main class="detail__main">
+        <div class="container">
+            <img class="detail_img" src="" alt="">
+        </div>
+        <section class="detail">
+            <div class="detail__card">
+                <div class="detail__header">
+                    <div class="detail__title">
+                        <h2 class="detail__name"></h2>
+                        <p class="detail__owner"></p>
+                    </div>
+
+                    <span class="detail__badge">Mahsulot</span>
+                </div>
+
+                <div class="detail__line"></div>
+
+                <div class="detail__grid">
+                    <div class="detail__item">
+                        <span class="detail__label">Sotib olingan sana</span>
+                        <strong class="detail__value" id="buyDate"></strong>
+                    </div>
+
+                    <div class="detail__item">
+                        <span class="detail__label">Sotilgan sana</span>
+                        <strong class="detail__value" id="sellDate"></strong>
+                    </div>
+
+                    <div class="detail__item">
+                        <span class="detail__label">Sotib olish narxi</span>
+                        <strong class="detail__value" id="buyPrice"></strong>
+                    </div>
+
+                    <div class="detail__item">
+                        <span class="detail__label">Oylik to'lovi</span>
+                        <strong class="detail__value" id="monthlyPrice"></strong>
+                    </div>
+
+                    <div class="detail__item detail__item--full detail__dates">
+                        <span class="detail__label">Sanalar</span>
+                        <ul class="detail__list data__list"></ul>
+                    </div>
+                    <div class="detail__item">
+                        <span class="detail__label">Hozirda olingan pul:</span>
+                        <p class="detail__comment" id="momentPluse"></p>
+                    </div>
+                    <div class="detail__item">
+                        <span class="detail__label">Berish kerak bo'lgan pul:</span>
+                        <p class="detail__comment" id="momentMinuse"></p>
+                    </div>
+
+                    <div class="detail__item detail__item--full" id="phone-div">
+                        <span class="detail__label">Telefon raqami</span>
+                        <strong class="detail__value" id="phone"></strong>
+                    </div>
+
+                    <div class="detail__item detail__item--full" id="comment-div">
+                        <span class="detail__label">Izoh</span>
+                        <p class="detail__comment" id="comment"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="./detail.js"></script>
+</body>
+</html>
